@@ -8,12 +8,24 @@ public class Producto {
 	private int Cant_Disp;
 	private int Id_Proveedor;
 	
+	public Producto() {
+		
+	}
+	
 	public Producto(String Nombre, int Precio, String Modelo, int Cant_Disp, int Id_Proveedor) {
 		this.Nombre = Nombre;
 		this.Precio = Precio;
 		this.Modelo = Modelo;
 		this.Cant_Disp = Cant_Disp;
 		this.Id_Proveedor = Id_Proveedor;
+	}
+	
+	public int getId_Producto() {
+		return Id_Producto;
+	}
+
+	public void setId_Producto(int id_Producto) {
+		Id_Producto = id_Producto;
 	}
 
 	public String getNombre() {
@@ -58,8 +70,7 @@ public class Producto {
 
 	@Override
 	public String toString() {
-		return "Producto [Id_Producto=" + Id_Producto + ", Nombre=" + Nombre + ", Precio=" + Precio + ", Modelo="
-				+ Modelo + ", Cant_Disp=" + Cant_Disp + ", Id_Proveedor=" + Id_Proveedor + "]";
+		return this.Nombre;
 	}
 	
 	

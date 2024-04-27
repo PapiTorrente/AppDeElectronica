@@ -10,6 +10,10 @@ public class Cliente {
 	private String Correo;
 	private boolean Es_Miembro;
 	
+	public Cliente() {
+		
+	}
+
 	public Cliente(String Nombre, String Ap_Paterno, String Ap_Materno, String Domicilio, String Telefono, String Correo, boolean Es_Miembro) {
 		super();
 		
@@ -21,8 +25,6 @@ public class Cliente {
 		this.Correo = Correo;
 		this.Es_Miembro = Es_Miembro;
 	}
-	
-
 
 	public String getNombre() {
 		return Nombre;
@@ -106,11 +108,17 @@ public class Cliente {
 		Es_Miembro = es_Miembro;
 	}
 
+	public int getId_Cliente() {
+		return Id_Cliente;
+	}
+
+	public void setId_Cliente(int id_Cliente) {
+		Id_Cliente = id_Cliente;
+	}
+
 	@Override
 	public String toString() {
-		return "Cliente [Id_Cliente=" + Id_Cliente + ", Nombre=" + Nombre + ", Ap_Paterno=" + Ap_Paterno
-				+ ", Ap_Materno=" + Ap_Materno + ", Domicilio=" + Domicilio + ", Telefono=" + Telefono + ", Correo="
-				+ Correo + ", Es_Miembro=" + Es_Miembro + "]";
+		return this.Correo;
 	}
 	
 	
