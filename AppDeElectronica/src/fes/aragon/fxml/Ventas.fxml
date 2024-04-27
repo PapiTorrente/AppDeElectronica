@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="426.0" prefWidth="361.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.InicioController">
+   <children>
+      <Label layoutX="148.0" layoutY="36.0" text="VENTAS">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="txtProducto" layoutX="69.0" layoutY="77.0" text="Producto" />
+      <Label fx:id="txtCantidad" layoutX="69.0" layoutY="113.0" text="Cantidad" />
+      <Label fx:id="txtFormaPago" layoutX="51.0" layoutY="285.0" text="Forma de Pago" />
+      <TextField fx:id="FormaPagoField" layoutX="188.0" layoutY="281.0" prefHeight="25.0" prefWidth="157.0" />
+      <Button id="BtnHacerVenta" fx:id="BtnAgregarProducto" layoutX="125.0" layoutY="387.0" mnemonicParsing="false" text="Agregar Producto" />
+      <TextField fx:id="CantidadField" layoutX="190.0" layoutY="109.0" prefHeight="25.0" prefWidth="157.0" />
+      <Label fx:id="txtFechaVenta" layoutX="46.0" layoutY="355.0" text="Fecha de la Venta" />
+      <MenuBar layoutY="2.0" prefWidth="361.0">
+        <menus>
+          <Menu fx:id="mnuOpciones" mnemonicParsing="false" text="Opciones">
+            <items>
+              <MenuItem fx:id="mnuDevolución" mnemonicParsing="false" text="Hacer Devolución" />
+                  <MenuItem fx:id="mnuEnvio" mnemonicParsing="false" text="Hacer Envio" />
+            </items>
+          </Menu>
+          <Menu fx:id="mnuCliente" mnemonicParsing="false" onAction="#abrirCliente" text="Crear Cliente" />
+          <Menu fx:id="mnuProveedor" mnemonicParsing="false" text="Crear Proveedor" />
+        </menus>
+      </MenuBar>
+      <Button id="BtnHacerVenta" fx:id="BtnHacerVenta" layoutX="264.0" layoutY="387.0" mnemonicParsing="false" text="Hacer Venta" />
+      <DatePicker fx:id="FechaPicker" layoutX="188.0" layoutY="351.0" prefHeight="25.0" prefWidth="157.0" />
+      <ComboBox fx:id="ClienteBox" layoutX="188.0" layoutY="315.0" prefHeight="25.0" prefWidth="157.0" />
+      <Label fx:id="txtCliente" layoutX="75.0" layoutY="319.0" text="Cliente" />
+      <ListView fx:id="Lista" layoutX="16.0" layoutY="146.0" prefHeight="122.0" prefWidth="329.0" />
+      <ComboBox fx:id="ProductoBox" layoutX="190.0" layoutY="73.0" prefHeight="25.0" prefWidth="157.0" />
+   </children>
+</Pane>
