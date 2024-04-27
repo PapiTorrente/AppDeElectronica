@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -24,4 +25,9 @@ public class ControlGeneral {
 			e.printStackTrace();
 		}
 	}
+	
+	public void cerrar(Button button) {
+		Stage stage = (Stage) button.getScene().getWindow();
+		stage.close();
+	}	
 }

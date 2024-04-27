@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="231.0" prefWidth="361.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.InicioController">
+   <children>
+      <Label layoutX="150.0" layoutY="27.0" text="ENVIOS">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="txtVenta" layoutX="76.0" layoutY="77.0" text="Venta" />
+      <Label fx:id="txtCostoEnvio" layoutX="60.0" layoutY="113.0" text="Costo Envio" />
+      <Label fx:id="txtFechaEnvio" layoutX="53.0" layoutY="150.0" text="Fecha de Envio" />
+      <Button id="BtnHacerVenta" fx:id="BtnHacerEnvio" layoutX="141.0" layoutY="192.0" mnemonicParsing="false" text="Hacer Envio" />
+      <TextField fx:id="CostoEnvioField" layoutX="190.0" layoutY="109.0" prefHeight="25.0" prefWidth="157.0" />
+      <ComboBox fx:id="VentaBox" layoutX="190.0" layoutY="73.0" prefHeight="25.0" prefWidth="157.0" />
+      <DatePicker fx:id="FechaPicker" layoutX="190.0" layoutY="146.0" prefHeight="25.0" prefWidth="157.0" />
+      <Button fx:id="BtnSalir" layoutX="308.0" layoutY="192.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Salir" />
+   </children>
+</Pane>

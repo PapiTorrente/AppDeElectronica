@@ -13,21 +13,22 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label layoutX="63.0" layoutY="77.0" text="Nombre (s)" />
-      <Label layoutX="49.0" layoutY="113.0" text="Apellido Paterno" />
-      <Label layoutX="46.0" layoutY="150.0" text="Apellido Materno" />
-      <Label layoutX="67.0" layoutY="185.0" text="Domicilio" />
-      <Label layoutX="68.0" layoutY="221.0" text="Teléfono" />
-      <TextField fx:id="CantidadTxtField" layoutX="190.0" layoutY="73.0" prefHeight="25.0" prefWidth="157.0" />
-      <TextField fx:id="FormaPagoTxtField" layoutX="190.0" layoutY="253.0" prefHeight="25.0" prefWidth="157.0" />
-      <Button id="BtnHacerVenta" fx:id="BtnAgregarProducto" layoutX="236.0" layoutY="321.0" mnemonicParsing="false" text="Agregar Producto" />
-      <TextField fx:id="CantidadTxtField1" layoutX="190.0" layoutY="109.0" prefHeight="25.0" prefWidth="157.0" />
-      <TextField fx:id="FormaPagoTxtField1" layoutX="190.0" layoutY="146.0" prefHeight="25.0" prefWidth="157.0" />
-      <TextField fx:id="FormaPagoTxtField2" layoutX="190.0" layoutY="181.0" prefHeight="25.0" prefWidth="157.0" />
-      <TextField fx:id="FormaPagoTxtField3" layoutX="190.0" layoutY="217.0" prefHeight="25.0" prefWidth="157.0" />
-      <Label layoutX="75.0" layoutY="257.0" text="Correo" />
-      <Label layoutX="62.0" layoutY="290.0" text="¿Es Cliente?" />
-      <RadioButton layoutX="236.0" layoutY="290.0" mnemonicParsing="false" text="Si" />
-      <RadioButton layoutX="283.0" layoutY="290.0" mnemonicParsing="false" text="No" />
+      <Label fx:id="txtNombre" layoutX="63.0" layoutY="77.0" text="Nombre (s)" />
+      <Label fx:id="txtApPaterno" layoutX="49.0" layoutY="113.0" text="Apellido Paterno" />
+      <Label fx:id="txtApMaterno" layoutX="46.0" layoutY="150.0" text="Apellido Materno" />
+      <Label fx:id="txtDomicilio" layoutX="67.0" layoutY="185.0" text="Domicilio" />
+      <Label fx:id="txtTelefono" layoutX="68.0" layoutY="221.0" text="Teléfono" />
+      <TextField fx:id="NombresField" layoutX="190.0" layoutY="73.0" prefHeight="25.0" prefWidth="157.0" />
+      <TextField fx:id="CorreoField" layoutX="190.0" layoutY="253.0" prefHeight="25.0" prefWidth="157.0" />
+      <Button id="BtnHacerVenta" fx:id="BtnAgregarCliente" layoutX="131.0" layoutY="321.0" mnemonicParsing="false" text="Agregar Cliente" />
+      <TextField fx:id="ApPaternoField" layoutX="190.0" layoutY="109.0" prefHeight="25.0" prefWidth="157.0" />
+      <TextField fx:id="ApMaternoField" layoutX="190.0" layoutY="146.0" prefHeight="25.0" prefWidth="157.0" />
+      <TextField fx:id="DomicilioField" layoutX="190.0" layoutY="181.0" prefHeight="25.0" prefWidth="157.0" />
+      <TextField fx:id="TelefonoField" layoutX="190.0" layoutY="217.0" prefHeight="25.0" prefWidth="157.0" />
+      <Label fx:id="txtCorreo" layoutX="75.0" layoutY="257.0" text="Correo" />
+      <Label fx:id="txtEsCliente" layoutX="62.0" layoutY="290.0" text="¿Es Cliente?" />
+      <RadioButton fx:id="SiBtn" layoutX="236.0" layoutY="290.0" mnemonicParsing="false" text="Si" />
+      <RadioButton fx:id="NoBtn" layoutX="283.0" layoutY="290.0" mnemonicParsing="false" text="No" />
+      <Button fx:id="BtnSalir" layoutX="308.0" layoutY="321.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Salir" />
    </children>
 </Pane>

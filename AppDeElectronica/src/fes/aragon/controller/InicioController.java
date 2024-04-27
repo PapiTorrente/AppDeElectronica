@@ -20,6 +20,9 @@ public class InicioController extends ControlGeneral{
     private Button BtnHacerVenta;
 
     @FXML
+    private Button BtnSalir;
+
+    @FXML
     private TextField CantidadField;
 
     @FXML
@@ -68,8 +71,17 @@ public class InicioController extends ControlGeneral{
     private Label txtProducto;
 
     @FXML
-    void abrirCliente(ActionEvent event) {
+    void abrirClientes(ActionEvent event) {
     	this.nuevaVentana("Clientes");
     }
 
+    @FXML
+    void abrirEnvios(ActionEvent event) {
+    	this.nuevaVentana("Envios");
+    }
+    
+    @FXML
+    void cerrarVentana(ActionEvent event) {
+    	this.cerrar(BtnSalir);
+    }
 }
