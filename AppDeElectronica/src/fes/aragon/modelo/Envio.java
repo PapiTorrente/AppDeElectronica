@@ -5,7 +5,10 @@ public class Envio {
 	private int Id_Venta;
 	private int Costo_Envio;
 	private String Fecha_Envio;
-	
+
+	public Envio() {
+		super();
+	}
 	public Envio(int Id_Envio, int Id_Venta, int Costo_Envio, String Fecha_Envio) {
 		this.Id_Envio = Id_Envio;
 		this.Id_Venta = Id_Venta;

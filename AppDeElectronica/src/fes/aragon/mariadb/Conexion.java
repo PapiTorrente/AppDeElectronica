@@ -1,10 +1,13 @@
 package fes.aragon.mariadb;
 
 import fes.aragon.modelo.Cliente;
+import fes.aragon.modelo.Envio;
 import fes.aragon.modelo.Producto;
+import fes.aragon.modelo.Venta;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -60,6 +63,61 @@ public class Conexion {
 			datos.add(c);
 		}
 		return datos;
+	}
+	
+	public ObservableList<Venta> obtenerVentas() throws SQLException {
+		String query="select * from ventas";
+		Statement s = conexion.createStatement();
+		ResultSet rs = s.executeQuery(query);
+		ObservableList<Venta> datos = FXCollections.observableArrayList();
+		while (rs.next()) {
+			Venta v = new Venta();
+			v.setId_Venta(rs.getInt(1));
+			v.setId_Producto(rs.getInt(2));
+			v.setPrecio(rs.getInt(3));
+			v.setCantidad(rs.getInt(4));
+			v.setForma_Pago(rs.getString(5));
+			v.setId_Cliente(rs.getInt(6));
+			v.setFecha_Venta(rs.getString(7));
+			v.setNombre_Producto(rs.getString(8));
+			datos.add(v);
+		}
+		return datos;
+	}
+	
+	public void insertarVenta(Venta venta) throws SQLException {
+		String query="insert into ventas values (null,?,?,?,?,?,?,?)";
+		PreparedStatement ps = conexion.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+		ps.setInt(1, venta.getId_Producto());
+		ps.setInt(2, venta.getPrecio());
+		ps.setInt(3, venta.getCantidad());
+		ps.setString(4, venta.getForma_Pago());
+		ps.setInt(5, venta.getId_Cliente());
+		ps.setString(6, venta.getFecha_Venta());
+		ps.setString(7, venta.getNombre_Producto());
+		ps.execute();
+	}
+	
+	public void insertarEnvio(Envio envio) throws SQLException {
+		String query="insert into envios values (null,?,?,?)";
+		PreparedStatement ps = conexion.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+		ps.setInt(1, envio.getId_Venta());
+		ps.setInt(2, envio.getCosto_Envio());
+		ps.setString(3, envio.getFecha_Envio());
+		ps.execute();
+	}
+	
+	public void insertarCliente(Cliente cliente) throws SQLException {
+		String query="insert into clientes values (null,?,?,?,?,?,?,?)";
+		PreparedStatement ps = conexion.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+		ps.setString(1, cliente.getNombre());
+		ps.setString(2, cliente.getAp_Paterno());
+		ps.setString(3, cliente.getAp_Materno());
+		ps.setString(4, cliente.getDomicilio());
+		ps.setString(5, cliente.getTelefono());
+		ps.setString(6, cliente.getCorreo());
+		ps.setBoolean(7, cliente.isEs_Miembro());
+		ps.execute();
 	}
 
 }

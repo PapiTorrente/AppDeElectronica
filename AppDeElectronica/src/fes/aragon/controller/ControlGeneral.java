@@ -1,9 +1,13 @@
 package fes.aragon.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
+import fes.aragon.mariadb.Conexion;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
@@ -30,4 +34,23 @@ public class ControlGeneral {
 		Stage stage = (Stage) button.getScene().getWindow();
 		stage.close();
 	}	
+	
+	public void ventanaEmergenteError(String encabezado, String contenido) {
+		Alert alerta;
+		alerta = new Alert(AlertType.ERROR);
+		alerta.setTitle("Error");
+		alerta.setHeaderText(encabezado);
+		alerta.setContentText(contenido);
+		alerta.showAndWait();
+	}
+	
+	public Conexion conexionSQL() {
+			try {
+				return new Conexion();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+			}
+			return null;
+	}
 }

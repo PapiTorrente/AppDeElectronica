@@ -3,13 +3,13 @@ package fes.aragon.controller;
 import fes.aragon.mariadb.Conexion;
 import fes.aragon.modelo.Cliente;
 import fes.aragon.modelo.Producto;
+import fes.aragon.modelo.Venta;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -48,7 +48,7 @@ public class InicioController  extends ControlGeneral implements Initializable{
     private TextField FormaPagoField;
 
     @FXML
-    private ListView<?> Lista;
+    private ListView<Venta> Lista = new ListView<Venta>();
 
     @FXML
     private ComboBox<Producto> ProductoBox = new ComboBox<Producto>();
@@ -82,6 +82,26 @@ public class InicioController  extends ControlGeneral implements Initializable{
 
     @FXML
     private Label txtProducto;
+    
+    @FXML
+    void hacerVenta(ActionEvent event){
+    	Venta v = new Venta();
+    	v.setId_Producto(this.ProductoBox.getSelectionModel().getSelectedItem().getId_Producto());
+    	v.setNombre_Producto(this.ProductoBox.getSelectionModel().getSelectedItem().getNombre());
+    	v.setPrecio(this.ProductoBox.getSelectionModel().getSelectedItem().getPrecio());
+    	v.setCantidad(Integer.parseInt(this.CantidadField.getText()));
+    	v.setForma_Pago(this.FormaPagoField.getText());
+    	v.setId_Cliente(this.ClienteBox.getSelectionModel().getSelectedItem().getId_Cliente());
+    	v.setFecha_Venta(String.valueOf(this.FechaPicker.getValue()));
+    	try {
+			this.cn.insertarVenta(v);
+			this.Lista.setItems(this.cn.obtenerVentas());
+		} catch (SQLException e) {
+			this.ventanaEmergenteError("Venta", "Error al guardar una venta!!!");
+		}
+    	this.CantidadField.clear();
+    	this.FormaPagoField.clear();
+    }
 
     @FXML
     void abrirClientes(ActionEvent event) { 
@@ -97,29 +117,21 @@ public class InicioController  extends ControlGeneral implements Initializable{
     void cerrarVentana(ActionEvent event) {
     	cerrar(BtnSalir);
     }
-    
-    private Conexion conexionSQL() {
-		try {
-			return new Conexion();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-		}
-		return null;
-	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
 			this.ProductoBox.getItems().addAll(this.cn.obtenerProductos());
 			this.ProductoBox.getSelectionModel().select(0);
-			ObservableList<Cliente> c = this.cn.obtenerClientes();
-			this.ClienteBox.getItems().addAll(c);
+			//-----------------------------------------------------
+			this.ClienteBox.getItems().addAll(this.cn.obtenerClientes());
 			this.ClienteBox.getSelectionModel().select(0);
+			//-----------------------------------------------------
 			this.FechaPicker.setValue(LocalDate.now());
+			//-----------------------------------------------------
+			this.Lista.setItems(this.cn.obtenerVentas());
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			this.ventanaEmergenteError("Conexion", "Error en la conexion de la BD!!!");
 		}
 	}
 }

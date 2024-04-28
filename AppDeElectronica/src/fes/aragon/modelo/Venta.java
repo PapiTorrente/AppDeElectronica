@@ -8,7 +8,11 @@ public class Venta {
 	private String Forma_Pago;
 	private int Id_Cliente;
 	private String Fecha_Venta;
+	private	String Nombre_Producto;
 	
+	public Venta() {
+		super();
+	}
 	public Venta(int id_Producto, int precio, int cantidad, String forma_Pago, int id_Cliente, String fecha_Venta) {
 		super();
 		Id_Producto = id_Producto;
@@ -18,11 +22,29 @@ public class Venta {
 		Id_Cliente = id_Cliente;
 		Fecha_Venta = fecha_Venta;
 	}
+	public String getNombre_Producto() {
+		return Nombre_Producto;
+	}
+	public void setNombre_Producto(String nombre_Producto) {
+		Nombre_Producto = nombre_Producto;
+	}
+	public int getId_Cliente() {
+		return Id_Cliente;
+	}
+	public void setId_Cliente(int id_Cliente) {
+		Id_Cliente = id_Cliente;
+	}
 	public int getId_Producto() {
 		return Id_Producto;
 	}
 	public void setId_Producto(int id_Producto) {
 		Id_Producto = id_Producto;
+	}
+	public int getId_Venta() {
+		return Id_Venta;
+	}
+	public void setId_Venta(int id_Venta) {
+		Id_Venta = id_Venta;
 	}
 	public int getPrecio() {
 		return Precio;
@@ -42,12 +64,6 @@ public class Venta {
 	public void setForma_Pago(String forma_Pago) {
 		Forma_Pago = forma_Pago;
 	}
-	public int getId_Cliente() {
-		return Id_Cliente;
-	}
-	public void setId_Cliente(int id_Cliente) {
-		Id_Cliente = id_Cliente;
-	}
 	public String getFecha_Venta() {
 		return Fecha_Venta;
 	}
@@ -56,9 +72,7 @@ public class Venta {
 	}
 	@Override
 	public String toString() {
-		return "Venta [Id_Venta=" + Id_Venta + ", Id_Producto=" + Id_Producto + ", Precio=" + Precio + ", Cantidad="
-				+ Cantidad + ", Forma_Pago=" + Forma_Pago + ", Id_Cliente=" + Id_Cliente + ", Fecha_Venta="
-				+ Fecha_Venta + "]";
+		return this.Nombre_Producto + " - " + this.Cantidad;
 	}
 	
 	

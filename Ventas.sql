@@ -42,6 +42,7 @@ PRIMARY KEY(id_cliente)
 CREATE TABLE ventas(
 id_venta INTEGER NOT NULL AUTO_INCREMENT,
 id_producto INTEGER,
+nombre VARCHAR(20),
 precio INTEGER,
 cantidad INTEGER,
 forma_pago VARCHAR(10),

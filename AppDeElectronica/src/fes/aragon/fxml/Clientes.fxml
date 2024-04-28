@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="361.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.InicioController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="361.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.ClientesController">
    <children>
       <Label layoutX="143.0" layoutY="27.0" text="CLIENTES">
          <font>
@@ -20,7 +20,7 @@
       <Label fx:id="txtTelefono" layoutX="68.0" layoutY="221.0" text="Teléfono" />
       <TextField fx:id="NombresField" layoutX="190.0" layoutY="73.0" prefHeight="25.0" prefWidth="157.0" />
       <TextField fx:id="CorreoField" layoutX="190.0" layoutY="253.0" prefHeight="25.0" prefWidth="157.0" />
-      <Button id="BtnHacerVenta" fx:id="BtnAgregarCliente" layoutX="131.0" layoutY="321.0" mnemonicParsing="false" text="Agregar Cliente" />
+      <Button id="BtnHacerVenta" fx:id="BtnAgregarCliente" layoutX="131.0" layoutY="321.0" mnemonicParsing="false" onAction="#insertarCliente" text="Agregar Cliente" />
       <TextField fx:id="ApPaternoField" layoutX="190.0" layoutY="109.0" prefHeight="25.0" prefWidth="157.0" />
       <TextField fx:id="ApMaternoField" layoutX="190.0" layoutY="146.0" prefHeight="25.0" prefWidth="157.0" />
       <TextField fx:id="DomicilioField" layoutX="190.0" layoutY="181.0" prefHeight="25.0" prefWidth="157.0" />
