@@ -16,7 +16,7 @@ import javafx.stage.StageStyle;
 
 public class ControlGeneral {
 
-	public void nuevaVentana(String archivo) {
+	public void abrirVentana(String archivo) {
 		try {
 			Pane root = (Pane) FXMLLoader.load(getClass().getResource("/fes/aragon/fxml/" + archivo + ".fxml"));
 			Scene scene = new Scene(root);
@@ -25,6 +25,18 @@ public class ControlGeneral {
 			escenario.initStyle(StageStyle.UNDECORATED);
 			escenario.initModality(Modality.APPLICATION_MODAL);
 			escenario.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void cerrarVentana(String archivo) {
+		try {
+			Pane root = (Pane) FXMLLoader.load(getClass().getResource("/fes/aragon/fxml" + archivo + ".fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

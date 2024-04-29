@@ -69,6 +69,7 @@ public class ClientesController extends ControlGeneral{
     @FXML
     void cerrarVentana(ActionEvent event) {
     	this.cerrar(BtnSalir);
+    	abrirVentana("Ventas");
     }
     
     @FXML

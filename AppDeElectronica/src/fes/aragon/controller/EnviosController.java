@@ -48,6 +48,7 @@ public class EnviosController extends ControlGeneral implements Initializable{
     @FXML
     void cerrarVentana(ActionEvent event) {
     	this.cerrar(BtnSalir);
+    	abrirVentana("Ventas");
     }
     
     @FXML

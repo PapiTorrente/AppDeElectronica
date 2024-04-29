@@ -18,7 +18,7 @@ import javafx.collections.ObservableList;
 public class Conexion {
 	private String url="jdbc:mariadb://127.0.0.1:3306/ventas?serverTimeZone=UTC";
 	private String usuario="root";
-	private String clave="112358";
+	private String clave="1234A";
 	private Connection conexion;
 	
 	public Conexion() throws ClassNotFoundException, SQLException {

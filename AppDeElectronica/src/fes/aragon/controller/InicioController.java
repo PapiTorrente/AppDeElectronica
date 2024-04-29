@@ -54,7 +54,16 @@ public class InicioController  extends ControlGeneral implements Initializable{
     private ComboBox<Producto> ProductoBox = new ComboBox<Producto>();
 
     @FXML
-    private Menu mnuCliente;
+    private Menu mnuCrear;
+
+    @FXML
+    private MenuItem mnuCrearCliente;
+
+    @FXML
+    private MenuItem mnuCrearProveedor;
+    
+    @FXML
+    private MenuItem mnuAgregarProductos;
 
     @FXML
     private MenuItem mnuDevolución;
@@ -64,9 +73,6 @@ public class InicioController  extends ControlGeneral implements Initializable{
 
     @FXML
     private Menu mnuOpciones;
-
-    @FXML
-    private Menu mnuProveedor;
 
     @FXML
     private Label txtCantidad;
@@ -105,17 +111,36 @@ public class InicioController  extends ControlGeneral implements Initializable{
 
     @FXML
     void abrirClientes(ActionEvent event) { 
-    	nuevaVentana("Clientes");
+    	abrirVentana("Clientes");
+    	cerrarVentana("Ventas");
+    }
+    
+    @FXML
+    void abrirProveedores(ActionEvent event) { 
+    	abrirVentana("Proveedores");
+    	cerrarVentana("Ventas");
+    }
+    
+    @FXML
+    void abrirProductos(ActionEvent event) {
+    	abrirVentana("Productos");
+    	cerrarVentana("Ventas");
     }
 
     @FXML
     void abrirEnvios(ActionEvent event) {
-    	nuevaVentana("Envios");
+    	abrirVentana("Envios");
+    	cerrarVentana("Ventas");
+    }
+    
+    void abrirDevoluciones(ActionEvent event) {
+    	abrirVentana("Devoluciones");
+    	cerrarVentana("Ventas");
     }
     
     @FXML
     void cerrarVentana(ActionEvent event) {
-    	cerrar(BtnSalir);
+    	this.cerrar(BtnSalir);
     }
 
 	@Override
