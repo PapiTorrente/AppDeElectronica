@@ -94,11 +94,12 @@ public class Conexion {
 		ObservableList<Proveedor> datos = FXCollections.observableArrayList();
 		while (rs.next()) {
 			Proveedor p = new Proveedor();
-			p.setNombre(rs.getString(1));
-			p.setAp_Paterno(rs.getString(2));
-			p.setAp_Materno(rs.getString(3));
-			p.setTelefono(rs.getString(4));
-			p.setCorreo(rs.getString(5));
+			p.setId_Proveedor(rs.getInt(1));
+			p.setNombre(rs.getString(2));
+			p.setAp_Paterno(rs.getString(3));
+			p.setAp_Materno(rs.getString(4));
+			p.setTelefono(rs.getString(5));
+			p.setCorreo(rs.getString(6));
 			datos.add(p);
 		}
 		return datos;
@@ -163,5 +164,17 @@ public class Conexion {
 		ps.execute();
 		ps.close();
 	}
+	
+	public void insertarProducto(Producto producto) throws SQLException {
+		String query="insert into productos values (null,?,?,?,?,?)";
+		PreparedStatement ps = conexion.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+		ps.setString(1, producto.getNombre());
+		ps.setInt(2, producto.getPrecio());
+		ps.setString(3, producto.getModelo());
+		ps.setInt(4, producto.getCant_Disp());
+		ps.setInt(5, producto.getId_Proveedor());
+		ps.execute();
+	}
+	
 
 }

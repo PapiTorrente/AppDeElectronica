@@ -147,11 +147,9 @@ public class InicioController  extends ControlGeneral implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
-			System.out.println(this.cn.obtenerProductos());
 			this.ProductoBox.getItems().addAll(this.cn.obtenerProductos());
 			this.ProductoBox.getSelectionModel().select(0);
 			//-----------------------------------------------------
-			System.out.println(this.cn.obtenerClientes());
 			this.ClienteBox.getItems().addAll(this.cn.obtenerClientes());
 			this.ClienteBox.getSelectionModel().select(0);
 			//-----------------------------------------------------

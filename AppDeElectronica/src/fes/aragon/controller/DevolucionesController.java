@@ -104,6 +104,7 @@ public class DevolucionesController extends ControlGeneral implements Initializa
     @FXML
     void hacerDevolución(ActionEvent event) {
     		try {
+    			if(this.productos.size() != 0){
     			int indiceEspacio;
     	    	String cantidad;
     	    	for (String producto : this.productos) {
@@ -121,8 +122,18 @@ public class DevolucionesController extends ControlGeneral implements Initializa
     	    	}
     	    	this.CantidadField.clear();
     	    	this.MotivoField.clear();
+    	    	this.FormaReenvolso.clear();
     	    	this.FechaPicker.setValue(LocalDate.now());
     	    	this.Lista.getItems().clear();
+    	    	this.productos.clear();
+    			}else {
+    				this.CantidadField.clear();
+        	    	this.MotivoField.clear();
+        	    	this.FormaReenvolso.clear();
+        	    	this.FechaPicker.setValue(LocalDate.now());
+        	    	this.Lista.getItems().clear();
+        	    	this.productos.clear();
+    			}
 			} catch (SQLException e) {
 				this.ventanaEmergenteError("Devolucion", "Error al guardar ua devolucion!!!");
 	    		this.cerrar(BtnHacerDevolucion);

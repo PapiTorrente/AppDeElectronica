@@ -60,10 +60,17 @@ public class Proveedor {
 		Correo = correo;
 	}
 
+	public int getId_Proveedor() {
+		return Id_Proveedor;
+	}
+
+	public void setId_Proveedor(int id_Proveedor) {
+		Id_Proveedor = id_Proveedor;
+	}
+
 	@Override
 	public String toString() {
-		return "Proveedor [Id_Proveedor=" + Id_Proveedor + ", Nombre=" + Nombre + ", Ap_Paterno=" + Ap_Paterno
-				+ ", Ap_Materno=" + Ap_Materno + ", Telefono=" + Telefono + ", Correo=" + Correo + "]";
+		return this.Id_Proveedor + " - " + this.Nombre;
 	}
 	
 	
