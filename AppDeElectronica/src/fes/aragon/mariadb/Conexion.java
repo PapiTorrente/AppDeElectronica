@@ -1,6 +1,7 @@
 package fes.aragon.mariadb;
 
 import fes.aragon.modelo.Cliente;
+import fes.aragon.modelo.Devolucion;
 import fes.aragon.modelo.Envio;
 import fes.aragon.modelo.Producto;
 import fes.aragon.modelo.Proveedor;
@@ -147,6 +148,20 @@ public class Conexion {
 		ps.setString(4, proveedor.getTelefono());
 		ps.setString(5, proveedor.getCorreo());
 		ps.execute();
+	}
+	
+	public void insertarDevolucion(Devolucion devolucion) throws SQLException {
+		String query="insert into devoluciones values (null,?,?,?,?,?,?,?)";
+		PreparedStatement ps = conexion.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+		ps.setInt(1, devolucion.getId_Producto());
+		ps.setInt(2, devolucion.getPrecio());
+		ps.setInt(3, devolucion.getCantidad());
+		ps.setString(4, devolucion.getForma_Devol());
+		ps.setString(5, devolucion.getMotivo());
+		ps.setInt(6, devolucion.getId_Cliente());
+		ps.setString(7, devolucion.getForma_Devol());
+		ps.execute();
+		ps.close();
 	}
 
 }

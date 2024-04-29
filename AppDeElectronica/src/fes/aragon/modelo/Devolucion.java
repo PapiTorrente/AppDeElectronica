@@ -10,6 +10,10 @@ public class Devolucion {
 	private int Id_Cliente;
 	private String Fecha_Venta;
 	
+	public Devolucion() {
+		super();
+	}
+
 	public Devolucion(int id_Producto, int precio, int cantidad, String forma_Devol, String motivo, int id_Cliente,
 			String fecha_Venta) {
 		super();

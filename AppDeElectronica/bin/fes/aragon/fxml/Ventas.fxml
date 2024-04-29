@@ -29,8 +29,8 @@
         <menus>
           <Menu fx:id="mnuOpciones" mnemonicParsing="false" text="Opciones">
             <items>
-              <MenuItem fx:id="mnuDevolución" mnemonicParsing="false" text="Hacer Devolución" />
                   <MenuItem fx:id="mnuEnvio" mnemonicParsing="false" onAction="#abrirEnvios" text="Hacer Envio" />
+                  <MenuItem fx:id="mnuDevolución" mnemonicParsing="false" onAction="#abrirDevoluciones" text="Hacer Devolución" />
             </items>
           </Menu>
           <Menu fx:id="mnuCrear" mnemonicParsing="false" text="Crear">
