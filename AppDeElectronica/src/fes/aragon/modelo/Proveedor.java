@@ -8,6 +8,10 @@ public class Proveedor {
 	private String Telefono;
 	private String Correo;
 	
+	public Proveedor() {
+		super();
+	}
+
 	public Proveedor(String Nombre, String Ap_Paterno, String Ap_Materno, String Telefono, String Correo) {
 		this.Nombre = Nombre;
 		this.Ap_Paterno = Ap_Paterno;

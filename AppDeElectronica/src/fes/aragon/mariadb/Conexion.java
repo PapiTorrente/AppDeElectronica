@@ -3,6 +3,7 @@ package fes.aragon.mariadb;
 import fes.aragon.modelo.Cliente;
 import fes.aragon.modelo.Envio;
 import fes.aragon.modelo.Producto;
+import fes.aragon.modelo.Proveedor;
 import fes.aragon.modelo.Venta;
 
 import java.sql.Connection;
@@ -18,7 +19,7 @@ import javafx.collections.ObservableList;
 public class Conexion {
 	private String url="jdbc:mariadb://127.0.0.1:3306/ventas?serverTimeZone=UTC";
 	private String usuario="root";
-	private String clave="1234A";
+	private String clave="112358";
 	private Connection conexion;
 	
 	public Conexion() throws ClassNotFoundException, SQLException {
@@ -85,6 +86,23 @@ public class Conexion {
 		return datos;
 	}
 	
+	public ObservableList<Proveedor> obtenerProveedores() throws SQLException {
+		String query="select * from proveedores";
+		Statement s = conexion.createStatement();
+		ResultSet rs = s.executeQuery(query);
+		ObservableList<Proveedor> datos = FXCollections.observableArrayList();
+		while (rs.next()) {
+			Proveedor p = new Proveedor();
+			p.setNombre(rs.getString(1));
+			p.setAp_Paterno(rs.getString(2));
+			p.setAp_Materno(rs.getString(3));
+			p.setTelefono(rs.getString(4));
+			p.setCorreo(rs.getString(5));
+			datos.add(p);
+		}
+		return datos;
+	}
+	
 	public void insertarVenta(Venta venta) throws SQLException {
 		String query="insert into ventas values (null,?,?,?,?,?,?,?)";
 		PreparedStatement ps = conexion.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -117,6 +135,17 @@ public class Conexion {
 		ps.setString(5, cliente.getTelefono());
 		ps.setString(6, cliente.getCorreo());
 		ps.setBoolean(7, cliente.isEs_Miembro());
+		ps.execute();
+	}
+	
+	public void insertarProveedor(Proveedor proveedor) throws SQLException {
+		String query="insert into proveedores values (null,?,?,?,?,?)";
+		PreparedStatement ps = conexion.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+		ps.setString(1, proveedor.getNombre());
+		ps.setString(2, proveedor.getAp_Paterno());
+		ps.setString(3, proveedor.getAp_Materno());
+		ps.setString(4, proveedor.getTelefono());
+		ps.setString(5, proveedor.getCorreo());
 		ps.execute();
 	}
 

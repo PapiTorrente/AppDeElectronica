@@ -32,7 +32,7 @@ public class ControlGeneral {
 	
 	public void cerrarVentana(String archivo) {
 		try {
-			Pane root = (Pane) FXMLLoader.load(getClass().getResource("/fes/aragon/fxml" + archivo + ".fxml"));
+			Pane root = (Pane) FXMLLoader.load(getClass().getResource("/fes/aragon/fxml/" + archivo + ".fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
 			stage.setScene(scene);
