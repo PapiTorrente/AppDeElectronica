@@ -76,12 +76,12 @@ public class Conexion {
 			Venta v = new Venta();
 			v.setId_Venta(rs.getInt(1));
 			v.setId_Producto(rs.getInt(2));
-			v.setPrecio(rs.getInt(3));
-			v.setCantidad(rs.getInt(4));
-			v.setForma_Pago(rs.getString(5));
-			v.setId_Cliente(rs.getInt(6));
-			v.setFecha_Venta(rs.getString(7));
-			v.setNombre_Producto(rs.getString(8));
+			v.setNombre_Producto(rs.getString(3));
+			v.setPrecio(rs.getInt(4));
+			v.setCantidad(rs.getInt(5));
+			v.setForma_Pago(rs.getString(6));
+			v.setId_Cliente(rs.getInt(7));
+			v.setFecha_Venta(rs.getString(8));
 			datos.add(v);
 		}
 		return datos;
