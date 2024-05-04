@@ -21,10 +21,16 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class InicioController  extends ControlGeneral implements Initializable{
 	
 	private Conexion cn = this.conexionSQL();
+	
+	private Stage stage;
+	
+	@FXML
+    private Button test;
 
     @FXML
     private Button BtnAgregarProducto;
@@ -112,41 +118,47 @@ public class InicioController  extends ControlGeneral implements Initializable{
     @FXML
     void abrirClientes(ActionEvent event) { 
     	abrirVentana("Clientes");
-    	cerrarVentana("Ventas");
+    	this.cerrarPantallaPrincipal();
     }
     
     @FXML
     void abrirProveedores(ActionEvent event) { 
     	abrirVentana("Proveedores");
-    	cerrarVentana("Ventas");
+    	this.cerrarPantallaPrincipal();
     }
     
     @FXML
     void abrirProductos(ActionEvent event) {
     	abrirVentana("Productos");
-    	cerrarVentana("Ventas");
+    	this.cerrarPantallaPrincipal();
     }
 
     @FXML
     void abrirEnvios(ActionEvent event) {
     	abrirVentana("Envios");
-    	cerrarVentana("Ventas");
+    	this.cerrarPantallaPrincipal();
     }
     
     @FXML
     void abrirDevoluciones(ActionEvent event) {
     	abrirVentana("Devoluciones");
-    	cerrarVentana("Ventas");
+    	this.cerrarPantallaPrincipal();
     }
     
     @FXML
     void cerrarVentana(ActionEvent event) {
     	this.cerrar(BtnSalir);
     }
+    
+    public void cerrarPantallaPrincipal() {
+    	stage = (Stage) this.BtnAgregarProducto.getScene().getWindow();
+    	stage.close();
+    }
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
+			//-----------------------------------------------------
 			this.ProductoBox.getItems().addAll(this.cn.obtenerProductos());
 			this.ProductoBox.getSelectionModel().select(0);
 			//-----------------------------------------------------

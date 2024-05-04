@@ -10,9 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class ControlGeneral {
 
@@ -22,8 +20,6 @@ public class ControlGeneral {
 			Scene scene = new Scene(root);
 			Stage escenario = new Stage();
 			escenario.setScene(scene);
-			escenario.initStyle(StageStyle.UNDECORATED);
-			escenario.initModality(Modality.APPLICATION_MODAL);
 			escenario.show();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -40,6 +36,11 @@ public class ControlGeneral {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void test (Button button) {
+		Stage stage = (Stage) button.getScene().getWindow();
+		System.out.println(stage);
 	}
 	
 	public void cerrar(Button button) {
