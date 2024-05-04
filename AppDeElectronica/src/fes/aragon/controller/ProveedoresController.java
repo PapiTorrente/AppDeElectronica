@@ -19,6 +19,9 @@ public class ProveedoresController extends ControlGeneral{
 
     @FXML
     private TextField ApPaternoField;
+    
+    @FXML
+    private TextField NombreEmpresaField;
 
     @FXML
     private Button BtnCrearProveedor;
@@ -60,6 +63,7 @@ public class ProveedoresController extends ControlGeneral{
     void crearProveedor(ActionEvent event) {
     	try {
     		Proveedor p = new Proveedor();
+    		p.setNombreEmpresa(this.NombreEmpresaField.getText());
         	p.setNombre(this.NombresField.getText());
         	p.setAp_Paterno(this.ApPaternoField.getText());
         	p.setAp_Materno(this.ApMaternoField.getText());
@@ -70,6 +74,7 @@ public class ProveedoresController extends ControlGeneral{
 			this.ventanaEmergenteError("Proveedor", "Error al guardar un proveedor!!!");
 		}
     	this.cerrar(BtnCrearProveedor);
+    	this.abrirVentana("Ventas");
     }
 
 }

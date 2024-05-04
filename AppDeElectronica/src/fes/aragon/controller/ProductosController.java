@@ -118,9 +118,10 @@ public class ProductosController extends ControlGeneral implements Initializable
     	    	this.productos.clear();
     		}
 		} catch (SQLException e) {
-			e.printStackTrace();
 			this.ventanaEmergenteError("Productos", "Error al guardar un producto!!!");
 		}
+    	this.cerrar(BtnAgregarProductSistema);
+    	this.abrirVentana("Ventas");
     }
 
     @FXML

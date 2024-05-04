@@ -2,6 +2,7 @@ package fes.aragon.modelo;
 
 public class Proveedor {
 	private int Id_Proveedor;
+	private String nombreEmpresa;
 	private String Nombre;
 	private String Ap_Paterno;
 	private String Ap_Materno;
@@ -66,6 +67,14 @@ public class Proveedor {
 
 	public void setId_Proveedor(int id_Proveedor) {
 		Id_Proveedor = id_Proveedor;
+	}
+
+	public String getNombreEmpresa() {
+		return nombreEmpresa;
+	}
+
+	public void setNombreEmpresa(String nombreEmpresa) {
+		this.nombreEmpresa = nombreEmpresa;
 	}
 
 	@Override

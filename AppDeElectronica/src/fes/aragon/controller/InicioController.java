@@ -28,9 +28,6 @@ public class InicioController  extends ControlGeneral implements Initializable{
 	private Conexion cn = this.conexionSQL();
 	
 	private Stage stage;
-	
-	@FXML
-    private Button test;
 
     @FXML
     private Button BtnAgregarProducto;
@@ -51,10 +48,10 @@ public class InicioController  extends ControlGeneral implements Initializable{
     private DatePicker FechaPicker = new DatePicker();
 
     @FXML
-    private TextField FormaPagoField;
-
-    @FXML
     private ListView<Venta> Lista = new ListView<Venta>();
+    
+    @FXML
+    private ComboBox<String> PagoBox = new ComboBox<String>();
 
     @FXML
     private ComboBox<Producto> ProductoBox = new ComboBox<Producto>();
@@ -97,12 +94,13 @@ public class InicioController  extends ControlGeneral implements Initializable{
     
     @FXML
     void hacerVenta(ActionEvent event){
+    	if(this.PagoBox.getSelectionModel().getSelectedIndex() != 0) {
     	Venta v = new Venta();
     	v.setId_Producto(this.ProductoBox.getSelectionModel().getSelectedItem().getId_Producto());
     	v.setNombre_Producto(this.ProductoBox.getSelectionModel().getSelectedItem().getNombre());
     	v.setPrecio(this.ProductoBox.getSelectionModel().getSelectedItem().getPrecio());
     	v.setCantidad(Integer.parseInt(this.CantidadField.getText()));
-    	v.setForma_Pago(this.FormaPagoField.getText());
+    	v.setForma_Pago(this.PagoBox.getValue());
     	v.setId_Cliente(this.ClienteBox.getSelectionModel().getSelectedItem().getId_Cliente());
     	v.setFecha_Venta(String.valueOf(this.FechaPicker.getValue()));
     	try {
@@ -112,7 +110,9 @@ public class InicioController  extends ControlGeneral implements Initializable{
 			this.ventanaEmergenteError("Venta", "Error al guardar una venta!!!");
 		}
     	this.CantidadField.clear();
-    	this.FormaPagoField.clear();
+    }else {
+    	this.ventanaEmergenteError("Venta", "Selecciona una forma de pago valida!!!");
+	}
     }
 
     @FXML
@@ -158,6 +158,8 @@ public class InicioController  extends ControlGeneral implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
+			this.PagoBox.getItems().addAll("Forma de pago:", "Efectivo", "Tarjeta");
+			this.PagoBox.getSelectionModel().select(0);
 			//-----------------------------------------------------
 			this.ProductoBox.getItems().addAll(this.cn.obtenerProductos());
 			this.ProductoBox.getSelectionModel().select(0);

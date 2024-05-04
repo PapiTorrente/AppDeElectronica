@@ -63,6 +63,7 @@ public class EnviosController extends ControlGeneral implements Initializable{
 			this.ventanaEmergenteError("Envio", "Error al guardar un Envio!!!");
 		}
     	this.cerrar(BtnHacerEnvio);
+    	this.abrirVentana("Ventas");
     }
 
 	@Override

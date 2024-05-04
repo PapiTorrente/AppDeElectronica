@@ -82,7 +82,7 @@ public class Conexion {
 			v.setForma_Pago(rs.getString(6));
 			v.setId_Cliente(rs.getInt(7));
 			v.setFecha_Venta(rs.getString(8));
-			datos.add(v);
+			datos.add(0, v);
 		}
 		return datos;
 	}
@@ -95,11 +95,12 @@ public class Conexion {
 		while (rs.next()) {
 			Proveedor p = new Proveedor();
 			p.setId_Proveedor(rs.getInt(1));
-			p.setNombre(rs.getString(2));
-			p.setAp_Paterno(rs.getString(3));
-			p.setAp_Materno(rs.getString(4));
-			p.setTelefono(rs.getString(5));
-			p.setCorreo(rs.getString(6));
+			p.setNombreEmpresa(rs.getString(2));
+			p.setNombre(rs.getString(3));
+			p.setAp_Paterno(rs.getString(4));
+			p.setAp_Materno(rs.getString(5));
+			p.setTelefono(rs.getString(6));
+			p.setCorreo(rs.getString(7));
 			datos.add(p);
 		}
 		return datos;
@@ -109,12 +110,12 @@ public class Conexion {
 		String query="insert into ventas values (null,?,?,?,?,?,?,?)";
 		PreparedStatement ps = conexion.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 		ps.setInt(1, venta.getId_Producto());
-		ps.setInt(2, venta.getPrecio());
-		ps.setInt(3, venta.getCantidad());
-		ps.setString(4, venta.getForma_Pago());
-		ps.setInt(5, venta.getId_Cliente());
-		ps.setString(6, venta.getFecha_Venta());
-		ps.setString(7, venta.getNombre_Producto());
+		ps.setString(2, venta.getNombre_Producto());
+		ps.setInt(3, venta.getPrecio());
+		ps.setInt(4, venta.getCantidad());
+		ps.setString(5, venta.getForma_Pago());
+		ps.setInt(6, venta.getId_Cliente());
+		ps.setString(7, venta.getFecha_Venta());
 		ps.execute();
 	}
 	
@@ -141,13 +142,14 @@ public class Conexion {
 	}
 	
 	public void insertarProveedor(Proveedor proveedor) throws SQLException {
-		String query="insert into proveedores values (null,?,?,?,?,?)";
-		PreparedStatement ps = conexion.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-		ps.setString(1, proveedor.getNombre());
-		ps.setString(2, proveedor.getAp_Paterno());
-		ps.setString(3, proveedor.getAp_Materno());
-		ps.setString(4, proveedor.getTelefono());
-		ps.setString(5, proveedor.getCorreo());
+		String query="insert into proveedores values (null,?,?,?,?,?,?)";
+		PreparedStatement ps = conexion.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);		
+		ps.setString(1, proveedor.getNombreEmpresa());
+		ps.setString(2, proveedor.getNombre());
+		ps.setString(3, proveedor.getAp_Paterno());
+		ps.setString(4, proveedor.getAp_Materno());
+		ps.setString(5, proveedor.getTelefono());
+		ps.setString(6, proveedor.getCorreo());
 		ps.execute();
 	}
 	

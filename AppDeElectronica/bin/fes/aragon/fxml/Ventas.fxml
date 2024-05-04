@@ -21,7 +21,6 @@
       <Label fx:id="txtProducto" layoutX="69.0" layoutY="77.0" text="Producto" />
       <Label fx:id="txtCantidad" layoutX="69.0" layoutY="113.0" text="Cantidad" />
       <Label fx:id="txtFormaPago" layoutX="51.0" layoutY="285.0" text="Forma de Pago" />
-      <TextField fx:id="FormaPagoField" layoutX="188.0" layoutY="281.0" prefHeight="25.0" prefWidth="157.0" />
       <Button fx:id="BtnAgregarProducto" layoutX="14.0" layoutY="387.0" mnemonicParsing="false" text="Agregar Producto" />
       <TextField fx:id="CantidadField" layoutX="190.0" layoutY="109.0" prefHeight="25.0" prefWidth="157.0" />
       <Label fx:id="txtFechaVenta" layoutX="46.0" layoutY="355.0" text="Fecha de la Venta" />
@@ -48,5 +47,6 @@
       <ListView fx:id="Lista" layoutX="16.0" layoutY="146.0" prefHeight="122.0" prefWidth="329.0" />
       <ComboBox fx:id="ProductoBox" layoutX="190.0" layoutY="73.0" prefHeight="25.0" prefWidth="157.0" />
       <Button fx:id="BtnSalir" layoutX="306.0" layoutY="387.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Salir" />
+      <ComboBox fx:id="PagoBox" layoutX="188.0" layoutY="281.0" prefHeight="25.0" prefWidth="157.0" />
    </children>
 </Pane>

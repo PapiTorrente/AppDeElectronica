@@ -137,6 +137,7 @@ public class DevolucionesController extends ControlGeneral implements Initializa
 			} catch (SQLException e) {
 				this.ventanaEmergenteError("Devolucion", "Error al guardar ua devolucion!!!");
 	    		this.cerrar(BtnHacerDevolucion);
+	    		this.abrirVentana("Ventas");
 			}
     }
     
