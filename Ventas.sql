@@ -84,7 +84,7 @@ FOREIGN KEY(id_venta) REFERENCES ventas(id_venta)
 insert into clientes values (1,"Jaime", "Lara", "Hernandez", "Valle de México", "5512345678","j1@hotmail.com", 1);
 insert into clientes values (2,"Melanie", "Clara", "Lopéz", "Valle de Aragon", "5587654321","m1@hotmail.com", 1);
 insert into clientes values (3,"Elizabeth", "Yang", "Garcia", "Valle de Europa", "5585746321","e1@hotmail.com", 0);
-insert into clientes values (4,"Erick", "Lara", "Hernandez", "Valle de Asia", "5598637452","e1@hotmail.com", 0);
+insert into clientes values (4,"Erick", "Lara", "Hernandez", "Valle de Asia", "5598637452","e2@hotmail.com", 0);
 insert into clientes values (5,"Adrian", "Sanchez", "VillaReal", "Valle de Geras", "5523874651","a1@hotmail.com", 1);
 /*Proveedores*/
 INSERT INTO proveedores VALUES (1,'Electrónica Innovadora', 'Juan', 'González', 'Martínez', '551234567890', 'juan.gonzalez@hotmail.com');
