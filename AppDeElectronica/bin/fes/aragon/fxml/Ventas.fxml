@@ -21,7 +21,7 @@
       <Label fx:id="txtProducto" layoutX="69.0" layoutY="77.0" text="Producto" />
       <Label fx:id="txtCantidad" layoutX="69.0" layoutY="113.0" text="Cantidad" />
       <Label fx:id="txtFormaPago" layoutX="51.0" layoutY="285.0" text="Forma de Pago" />
-      <Button fx:id="BtnAgregarProducto" layoutX="14.0" layoutY="387.0" mnemonicParsing="false" text="Agregar Producto" />
+      <Button fx:id="BtnAgregarProducto" layoutX="14.0" layoutY="387.0" mnemonicParsing="false" onAction="#agregarProducto" text="Agregar Producto" />
       <TextField fx:id="CantidadField" layoutX="190.0" layoutY="109.0" prefHeight="25.0" prefWidth="157.0" />
       <Label fx:id="txtFechaVenta" layoutX="46.0" layoutY="355.0" text="Fecha de la Venta" />
       <MenuBar layoutY="2.0" prefWidth="361.0">

@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,6 +30,11 @@ public class InicioController  extends ControlGeneral implements Initializable{
 	private Conexion cn = this.conexionSQL();
 	
 	private Stage stage;
+	
+	private ObservableList<Venta> ventas = FXCollections.observableArrayList();
+	
+	private Integer indice = -1;
+	
 
     @FXML
     private Button BtnAgregarProducto;
@@ -94,25 +101,14 @@ public class InicioController  extends ControlGeneral implements Initializable{
     
     @FXML
     void hacerVenta(ActionEvent event){
-    	if(this.PagoBox.getSelectionModel().getSelectedIndex() != 0) {
-    	Venta v = new Venta();
-    	v.setId_Producto(this.ProductoBox.getSelectionModel().getSelectedItem().getId_Producto());
-    	v.setNombre_Producto(this.ProductoBox.getSelectionModel().getSelectedItem().getNombre());
-    	v.setPrecio(this.ProductoBox.getSelectionModel().getSelectedItem().getPrecio());
-    	v.setCantidad(Integer.parseInt(this.CantidadField.getText()));
-    	v.setForma_Pago(this.PagoBox.getValue());
-    	v.setId_Cliente(this.ClienteBox.getSelectionModel().getSelectedItem().getId_Cliente());
-    	v.setFecha_Venta(String.valueOf(this.FechaPicker.getValue()));
-    	try {
-			this.cn.insertarVenta(v);
-			this.Lista.setItems(this.cn.obtenerVentas());
-		} catch (SQLException e) {
-			this.ventanaEmergenteError("Venta", "Error al guardar una venta!!!");
+    	for (Venta venta : ventas) {
+			try {
+				this.cn.insertarVenta(venta);
+			} catch (SQLException e) {
+				this.ventanaEmergenteError("Venta", "Error al agregar una venta!!!");
+			}
 		}
-    	this.CantidadField.clear();
-    }else {
-    	this.ventanaEmergenteError("Venta", "Selecciona una forma de pago valida!!!");
-	}
+    	this.Lista.getItems().clear();
     }
 
     @FXML
@@ -146,6 +142,29 @@ public class InicioController  extends ControlGeneral implements Initializable{
     }
     
     @FXML
+    void agregarProducto(ActionEvent event) {
+    	if(this.PagoBox.getSelectionModel().getSelectedIndex() != 0) {
+    		if(this.indice == -1) {
+    			this.indice = this.ClienteBox.getSelectionModel().getSelectedIndex();
+    			this.agregarVentaALista();
+            	this.CantidadField.clear();
+    		}else {
+    			if(this.indice == this.ClienteBox.getSelectionModel().getSelectedIndex()) {
+    				this.agregarVentaALista();
+                	this.CantidadField.clear();
+    			}else {
+    				this.indice = this.ClienteBox.getSelectionModel().getSelectedIndex();
+    				this.Lista.getItems().clear();
+    				this.ventas.clear();
+    				this.agregarVentaALista();
+    			}
+    		}
+        }else {
+        	this.ventanaEmergenteError("Venta", "Selecciona una forma de pago valida!!!");
+    	}
+    }
+    
+    @FXML
     void cerrarVentana(ActionEvent event) {
     	this.cerrar(BtnSalir);
     }
@@ -153,6 +172,20 @@ public class InicioController  extends ControlGeneral implements Initializable{
     public void cerrarPantallaPrincipal() {
     	stage = (Stage) this.BtnAgregarProducto.getScene().getWindow();
     	stage.close();
+    }
+    
+    public void agregarVentaALista() {
+    	Venta v = new Venta();
+    	v.setId_Producto(this.ProductoBox.getSelectionModel().getSelectedItem().getId_Producto());
+    	v.setNombre_Producto(this.ProductoBox.getSelectionModel().getSelectedItem().getNombre());
+    	v.setPrecio(this.ProductoBox.getSelectionModel().getSelectedItem().getPrecio());
+    	v.setCantidad(Integer.parseInt(this.CantidadField.getText()));
+    	v.setForma_Pago(this.PagoBox.getValue());
+    	v.setId_Cliente(this.ClienteBox.getSelectionModel().getSelectedItem().getId_Cliente());
+    	v.setFecha_Venta(String.valueOf(this.FechaPicker.getValue()));
+    	this.ventas.add(v);
+    	this.Lista.getItems().add(0, v);
+    	this.CantidadField.clear();
     }
 
 	@Override
@@ -169,7 +202,6 @@ public class InicioController  extends ControlGeneral implements Initializable{
 			//-----------------------------------------------------
 			this.FechaPicker.setValue(LocalDate.now());
 			//-----------------------------------------------------
-			this.Lista.setItems(this.cn.obtenerVentas());
 		} catch (SQLException e) {
 			this.ventanaEmergenteError("Conexion", "Error en la conexion de la BD!!!");
 		}
